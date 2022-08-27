@@ -14,21 +14,24 @@ from pprint import pprint
 ## file does note xist and returns
 ## empty dict
 
+
 def loadPropertyFile(pFileName):
     data = {}
     try:
         json_data = open(pFileName)
     except:
-        print("File does not exist " + pFileName)
+        print(("File does not exist " + pFileName))
     try:
         data = json.load(json_data)
     except:
-       print("Incorrect JSON Format  " + pFileName)
-       raise
+        print(("Incorrect JSON Format  " + pFileName))
+        raise
     return data
+
 
 ## Prints Content of Json
 ## property file
+
 
 def printPropertyFile(pFileName):
     try:
@@ -39,23 +42,26 @@ def printPropertyFile(pFileName):
     except:
         print("File does not exist")
 
+
 ## Generates a property file
 ## with corresponding file name
 ## from directionary
 def generatePropertyFile(dic, filename):
-    with open(filename,'wb') as f:
-        json.dump(dic,f)
+    with open(filename, "wb") as f:
+        json.dump(dic, f)
+
 
 def toBool(st):
-  if st == "true":
-    return True
-  else:
-    return False
+    if st == "true":
+        return True
+    else:
+        return False
+
 
 ## Get GIT Revision Hash
 def getGitHash(projectpath):
-  currentdir = os.getcwd();
-  os.chdir(projectpath)
-  hash = subprocess.check_output(['git', 'rev-parse', 'HEAD'])
-  os.chdir(currentdir)
-  return hash
+    currentdir = os.getcwd()
+    os.chdir(projectpath)
+    hash = subprocess.check_output(["git", "rev-parse", "HEAD"])
+    os.chdir(currentdir)
+    return hash
